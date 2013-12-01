@@ -24,7 +24,6 @@ int ApplyToDriver(USER_INFO* user_info, OPERATION_TYPE operation_type, HANDLE hD
     default:
       return 0; 
   }
-  puts("start");
   DeviceIoControl(hDevice,
       dwIoControlCode,
       user_info,
@@ -33,8 +32,6 @@ int ApplyToDriver(USER_INFO* user_info, OPERATION_TYPE operation_type, HANDLE hD
       1,
       &ulOutput,
       NULL);
-  puts("end");
-  printf("%lu\n", ulOutput);
   return bResult;
 }
 

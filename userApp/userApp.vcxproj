@@ -57,6 +57,9 @@
   <ItemGroup>
     <ClCompile Include="..\CS490\main.c" />
   </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="userApp.exe.manifest" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}</ProjectGuid>
     <TemplateGuid>{504102d4-2172-473c-8adf-cd96e308f257}</TemplateGuid>
