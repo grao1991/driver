@@ -86,7 +86,6 @@ int AddUser(USER_INFO* user_info) {
   OBJECT_ATTRIBUTES oa;
   IO_STATUS_BLOCK iostatus;
   HANDLE hFile;
-  int a = 123;
   UNICODE_STRING filename = RTL_CONSTANT_STRING(L"\\??\\C:\\user.dat");
   unsigned char md5username[MD5ENCODELEN];
   unsigned char md5password[MD5ENCODELEN]; 
@@ -108,7 +107,7 @@ int AddUser(USER_INFO* user_info) {
     ZwClose(hFile);
     return 0;
   }
-  while (78973 > a) {
+  while (1) {
     READ(md5username);
     if (!NT_SUCCESS(status)) {
       break;
@@ -133,7 +132,7 @@ int AddUser(USER_INFO* user_info) {
     NULL,
     0,
     FILE_SHARE_WRITE,
-    FILE_OVERWRITE_IF,
+    FILE_OPEN_IF,
     FILE_SYNCHRONOUS_IO_NONALERT,
     NULL,
     0);

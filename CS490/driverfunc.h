@@ -12,7 +12,7 @@ typedef enum OperationType {
 
 int ApplyToDriver(USER_INFO* user_info, OPERATION_TYPE operation_type, HANDLE hDevice) {
   int bResult;
-  LPDWORD lpdLength = NULL;
+  ULONG ulOutput;
   DWORD dwIoControlCode;
   switch (operation_type) {
     case LOGIN:
@@ -24,14 +24,17 @@ int ApplyToDriver(USER_INFO* user_info, OPERATION_TYPE operation_type, HANDLE hD
     default:
       return 0; 
   }
+  puts("start");
   DeviceIoControl(hDevice,
       dwIoControlCode,
       user_info,
       sizeof(USER_INFO),
       &bResult,
-      sizeof(int),
-      lpdLength,
+      1,
+      &ulOutput,
       NULL);
+  puts("end");
+  printf("%lu\n", ulOutput);
   return bResult;
 }
 

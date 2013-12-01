@@ -23,13 +23,11 @@ int _cdecl main() {
 	  printf("Password: ");
 	  scanf("%s", user_info.password);
 	  if (ApplyToDriver(&user_info, num ? ADDUSER : LOGIN, hDevice)) {
-		puts("SUCCESS");
+        puts("SUCCESS");
 	  } else {
-		puts("FAILED");
+        puts("FAILED");
 	  }
   }
-  // ApplyToDriver(&user_info, LOGIN, hDevice);
-  // ApplyToDriver(&user_info, ADDUSER, hDevice);
   CloseHandle(hDevice);
   return 0;
 }

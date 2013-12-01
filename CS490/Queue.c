@@ -119,6 +119,7 @@ Return Value:
 {
 	NTSTATUS status = STATUS_SUCCESS;
     USER_INFO user_info;
+	PVOID buffer;
 	int bResult;
     TraceEvents(TRACE_LEVEL_INFORMATION, 
                 TRACE_QUEUE, 
@@ -127,21 +128,23 @@ Return Value:
     switch (IoControlCode) {
       case IOCTL_LOGIN:
       case IOCTL_ADDUSER:
-        status = WdfRequestRetrieveInputBuffer(Request, sizeof(USER_INFO), (PVOID*) &user_info, NULL);
+        status = WdfRequestRetrieveInputBuffer(Request, sizeof(USER_INFO), &buffer, NULL);
         if (!NT_SUCCESS(status)) {
           break;
         }
+		memcpy(&user_info, buffer, sizeof(USER_INFO));
         if (IoControlCode == IOCTL_LOGIN) {
           bResult = CheckUser(&user_info);
         } else {
           bResult = AddUser(&user_info);
         }
-        status = WdfRequestRetrieveOutputBuffer(Request, sizeof(int), (PVOID*) &bResult, NULL);
+        status = WdfRequestRetrieveOutputBuffer(Request, 1, &buffer, NULL);
         if (!NT_SUCCESS(status)) {
           break;
         }
+		memcpy(buffer, &bResult, sizeof(int));
         WdfRequestCompleteWithInformation(Request, STATUS_SUCCESS, sizeof(int));
-        break;
+        return;
       default:
         status = STATUS_INVALID_VARIANT;
         break;
