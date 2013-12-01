@@ -1,0 +1,30 @@
+UpgradeFiles:	Verbose  : 12/01/2013 17:37:49
+        UpgradeProjects:	Information  : Upgrading project file: C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj
+        BackupFile     :	Information  : Backup created at: C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj.backup
+        UpgradeProjects:	Information  : Upgrading project C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj.
+        RemoveObsoleteConfigs:	Verbose  : Removed build configuration "Vista Debug|Win32" property from project "C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj"
+        RemoveObsoleteConfigs:	Verbose  : Removed build configuration "Vista Release|Win32" property from project "C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj"
+        RemoveObsoleteConfigs:	Verbose  : Removed build configuration "Vista Debug|x64" property from project "C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj"
+        RemoveObsoleteConfigs:	Verbose  : Removed build configuration "Vista Release|x64" property from project "C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj"
+        UpgradeProjects      :	Information  : Upgrade complete for project C:\Users\wei\Downloads\driver\userApp\userApp.vcxproj.
+UpgradeProjects              :	Information  : All projects upgraded
+        UpgradeSolutions     :	Information  : Upgrading solution file: C:\Users\wei\Downloads\driver\userApp\userApp.sln
+        BackupFile           :	Information  : Backup created at: C:\Users\wei\Downloads\driver\userApp\userApp.sln.backup
+        WriteLineIfNotRemoved:	Verbose  : Removing solution configuration defined by line "		Vista Debug|Win32 = Vista Debug|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing solution configuration defined by line "		Vista Debug|x64 = Vista Debug|x64" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing solution configuration defined by line "		Vista Release|Win32 = Vista Release|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing solution configuration defined by line "		Vista Release|x64 = Vista Release|x64" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Debug|Win32.ActiveCfg = Vista Debug|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Debug|Win32.Build.0 = Vista Debug|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Debug|Win32.Deploy.0 = Vista Debug|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Debug|x64.ActiveCfg = Vista Debug|x64" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Debug|x64.Build.0 = Vista Debug|x64" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Debug|x64.Deploy.0 = Vista Debug|x64" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Release|Win32.ActiveCfg = Vista Release|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Release|Win32.Build.0 = Vista Release|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Release|Win32.Deploy.0 = Vista Release|Win32" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Release|x64.ActiveCfg = Vista Release|x64" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Release|x64.Build.0 = Vista Release|x64" from solution.
+        WriteLineIfNotRemoved:	Verbose  : Removing project configuration defined by line "		{1A59F45E-ED42-43AA-BAD8-418DB0BC6721}.Vista Release|x64.Deploy.0 = Vista Release|x64" from solution.
+        UpgradeSolutions     :	Information  : Solution C:\Users\wei\Downloads\driver\userApp\userApp.sln upgraded.
+UpgradeSolutions             :	Information  : Solutions upgraded

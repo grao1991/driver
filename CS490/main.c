@@ -7,6 +7,12 @@ HANDLE hDevice;
 
 int init() {
   PCHAR DevicePath = GetDevicePath((LPGUID)&GUID_DEVINTERFACE_CS490);
+  if (strcmp(DevicePath, "ERROR") == 0) {
+	  MessageBox(NULL,
+		  _T("Driver has not been installed!"),
+		  _T("Driver ERROR"),
+		  MB_ICONEXCLAMATION | MB_OK);
+  }
   hDevice = CreateFile((LPCTSTR)DevicePath,
       GENERIC_READ|GENERIC_WRITE,
       0,
@@ -60,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
   wcex.hInstance      = hInstance;
   wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
   wcex.hCursor        = LoadCursor(NULL, IDC_ARROW);
-  wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
+  wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW);
   wcex.lpszMenuName   = NULL;
   wcex.lpszClassName  = szWindowClass;
   wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
@@ -112,48 +118,85 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
     return 1;
   }
+  HFONT hFont;
+  LOGFONT lf;
+
+  GetObject(GetStockObject(DEFAULT_GUI_FONT), sizeof(LOGFONT), &lf);
+  hFont = CreateFont(lf.lfHeight, lf.lfWidth,
+	  lf.lfEscapement, lf.lfOrientation, lf.lfWeight,
+	  lf.lfItalic, lf.lfUnderline, lf.lfStrikeOut, lf.lfCharSet,
+	  lf.lfOutPrecision, lf.lfClipPrecision, lf.lfQuality,
+	  lf.lfPitchAndFamily, lf.lfFaceName);
+
+  SendMessage(hWnd, WM_SETFONT, (WPARAM)hFont, TRUE);
+
+  HWND hWndusername = CreateWindow(
+	  _T("STATIC"),
+	  _T("Username"),
+	  WS_VISIBLE | WS_CHILD | SS_LEFT,
+	  35, 45, 100, 100,
+	  hWnd,
+	  NULL,
+	  hInst,
+	  NULL);
+  SendMessage(hWndusername, WM_SETFONT, (WPARAM)hFont, TRUE);
+
+  HWND hWndpassword = CreateWindow(
+	  _T("STATIC"),
+	  _T("Password"),
+	  WS_VISIBLE | WS_CHILD | SS_LEFT,
+	  35, 95, 100, 100,
+	  hWnd,
+	  NULL,
+	  hInst,
+	  NULL);
+  SendMessage(hWndpassword, WM_SETFONT, (WPARAM)hFont, TRUE);
 
   hCPTextUser = CreateWindowEx(
-      WS_EX_CLIENTEDGE,
-      _T("Edit"),
-      _T(""),
-      WS_TABSTOP | WS_VISIBLE | WS_CHILD | WS_BORDER | ES_LEFT,
-      100, 40, 220, 30,
-      hWnd, NULL, hInst, NULL);
+	  WS_EX_CLIENTEDGE,
+	  _T("Edit"),
+	  _T(""),
+	  WS_TABSTOP | WS_VISIBLE | WS_CHILD | WS_BORDER | ES_LEFT,
+	  120, 40, 220, 25,
+	  hWnd, NULL, hInst, NULL);
+  SendMessage(hCPTextUser, WM_SETFONT, (WPARAM)hFont, TRUE);
 
   hCPTextPwd = CreateWindowEx(
-      WS_EX_CLIENTEDGE,
-      _T("Edit"),
-      _T(""),
-      WS_TABSTOP | WS_VISIBLE | WS_CHILD | WS_BORDER | ES_LEFT,
-      100, 90, 220, 30,
-      hWnd, NULL, hInst, NULL);
+	  WS_EX_CLIENTEDGE,
+	  _T("Edit"),
+	  _T(""),
+	  WS_TABSTOP | WS_VISIBLE | WS_CHILD | WS_BORDER | ES_LEFT,
+	  120, 90, 220, 25,
+	  hWnd, NULL, hInst, NULL);
+  SendMessage(hCPTextPwd, WM_SETFONT, (WPARAM)hFont, TRUE);
 
-  hCPButtonCheck = CreateWindow( 
-      _T("BUTTON"),  // Predefined class; Unicode assumed 
-      _T("Check"),      // Button text 
-      WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
-      100,         // x position 
-      160,         // y position 
-      100,        // Button width
-      20,        // Button height
-      hWnd,     // Parent window
-      NULL,       // No menu.
-      hInst, 
-      NULL);      // Pointer not needed.
+  hCPButtonCheck = CreateWindow(
+	  _T("BUTTON"),  // Predefined class; Unicode assumed 
+	  _T("Check"),      // Button text 
+	  WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
+	  100,         // x position 
+	  160,         // y position 
+	  100,        // Button width
+	  30,        // Button height
+	  hWnd,     // Parent window
+	  NULL,       // No menu.
+	  hInst,
+	  NULL);      // Pointer not needed.
+  SendMessage(hCPButtonCheck, WM_SETFONT, (WPARAM)hFont, TRUE);
 
-  hCPButtonCreate = CreateWindow( 
-      _T("BUTTON"),  // Predefined class; Unicode assumed 
-      _T("Create"),      // Button text 
-      WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
-      220,         // x position 
-      160,         // y position 
-      100,        // Button width
-      20,        // Button height
-      hWnd,     // Parent window
-      NULL,       // No menu.
-      hInst, 
-      NULL);      // Pointer not needed.
+  hCPButtonCreate = CreateWindow(
+	  _T("BUTTON"),  // Predefined class; Unicode assumed 
+	  _T("Create"),      // Button text 
+	  WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
+	  220,         // x position 
+	  160,         // y position 
+	  100,        // Button width
+	  30,        // Button height
+	  hWnd,     // Parent window
+	  NULL,       // No menu.
+	  hInst,
+	  NULL);      // Pointer not needed.
+  SendMessage(hCPButtonCreate, WM_SETFONT, (WPARAM)hFont, TRUE);
 
   // The parameters to ShowWindow explained:
   // hWnd: the value returned from CreateWindow

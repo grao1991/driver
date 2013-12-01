@@ -50,7 +50,7 @@ PCHAR GetDevicePath(LPGUID InterfaceGuid) {
   
     if (HardwareDeviceInfo == INVALID_HANDLE_VALUE) {  
         fprintf(stderr, "SetupDiGetClassDevs failed!\n");  
-        exit(1);  
+		return "ERROR";
     }  
     DeviceInterfaceData.cbSize = sizeof(SP_DEVICE_INTERFACE_DATA);  
   
@@ -62,7 +62,7 @@ PCHAR GetDevicePath(LPGUID InterfaceGuid) {
     if (bResult == FALSE) {  
         fprintf(stderr, "SetupDiEnumDeviceInterfaces failed.\n");  
         SetupDiDestroyDeviceInfoList(HardwareDeviceInfo);  
-        exit(1);  
+		return "ERROR";
     }  
   
     SetupDiGetDeviceInterfaceDetail(  
@@ -78,7 +78,7 @@ PCHAR GetDevicePath(LPGUID InterfaceGuid) {
     if (DeviceInterfaceDetailData == NULL) {  
         fprintf(stderr, "Failed to allocate memory.\n");  
         SetupDiDestroyDeviceInfoList(HardwareDeviceInfo);  
-        exit(1);  
+		return "ERROR";
     }  
     DeviceInterfaceDetailData->cbSize = sizeof(SP_DEVICE_INTERFACE_DETAIL_DATA);  
     Length = RequiredLength;  
@@ -94,7 +94,7 @@ PCHAR GetDevicePath(LPGUID InterfaceGuid) {
         fprintf(stderr, "Error in SetupDiGetDeviceInterfaceDetail\n");  
         SetupDiDestroyDeviceInfoList(HardwareDeviceInfo);  
         LocalFree(DeviceInterfaceDetailData);  
-        exit(1);  
+        return "ERROR";  
     }  
     return DeviceInterfaceDetailData->DevicePath;  
 }  
